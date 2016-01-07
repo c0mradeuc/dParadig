@@ -1,0 +1,15 @@
+﻿@using dParadig.Models
+@model List<Semanas>
+
+<div style="margin:30px;">
+    <select id="selSemanas">
+         @foreach (Semanas item in Model){
+            <option value="@item.NroSemana">@item.Rango</option>
+         }
+    </select>
+
+    <button type="button" class="btn btn-default btn-sm" onclick="ObtenerResultados();">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ver
+    </button> 
+</div>
+<div id="divResultados"></div>

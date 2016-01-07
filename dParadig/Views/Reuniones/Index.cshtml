@@ -1,0 +1,43 @@
+﻿@using dParadig.ViewModels
+@model List<ReunionesVM>
+
+<div class="panel panel-primary" style="margin: 30px;">
+  <div class="panel-heading">Reuniones
+    <button type="button" class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Formulario", "Reuniones")'">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear
+    </button> 
+  </div>
+ <div class="panel-body">
+    <p>Se visualizan las reuniones realizadas (archivo: "<b>Reuniones.txt</b>").</p>
+  </div>
+  <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>
+                Jefe de Área
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+    @foreach (ReunionesVM item in Model)
+    {
+        <tr>
+            <td>
+                @item.NombreJefe
+            </td>
+            <td>
+                @item.Fecha
+            </td>
+            <td>
+                @Html.ActionLink("Eliminar", "Eliminar", item)
+            </td>
+        </tr>
+        }
+        </tbody>
+    
+    </table>
+    </div>

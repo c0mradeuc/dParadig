@@ -1,0 +1,10 @@
+﻿@using dParadig.ViewModels
+@model List<ResultadosVM>
+
+
+         @foreach (ResultadosVM iResultado in Model)
+         {
+            <label class="label label-info">> @iResultado.NombreJefe : @iResultado.Cumplimiento%</label><br />
+         }
+
+

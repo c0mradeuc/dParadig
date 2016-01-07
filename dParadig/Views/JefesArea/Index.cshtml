@@ -1,0 +1,66 @@
+﻿@using dParadig.Models
+@model List<JefeArea>
+
+<div class="panel panel-primary" style="margin: 30px;">
+  <div class="panel-heading">Jefes de Área
+    <button type="button" class="btn btn-default btn-sm" onclick="AbrirFormularioCrearJefe();">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear
+    </button> 
+  </div>
+ <div class="panel-body">
+    <p>Se visualizan todos los Jefes de Área (archivo: "<b>Jefes.txt</b>").</p>
+  </div>
+    <table id="tablaJefesArea" class="table table-hover">
+        <thead>
+        <tr>
+            <th style="text-align:center;">
+                Código
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+    @foreach (JefeArea item in Model) {
+        <tr>
+            <td style="text-align:center;">
+                @item.IdJefe
+            </td>
+            <td>
+                @item.Nombre
+            </td>
+            <td>
+                @item.Apellidos
+            </td>
+            <td>
+                <a href="#" onclick="AbrirFormularioEditarJefe('@item.IdJefe');">Editar</a> |
+                <a href="#" onclick="EliminarJefe('@item.IdJefe');">Eliminar</a>
+            </td>
+        </tr>
+        }
+        </tbody>
+    
+    </table>
+    </div>
+
+<script>
+    $("#tablaJefesArea").DataTable({
+        "language": {
+            "paginate": {
+                "previous": "Anterior",
+                "next": "Siguiente"
+            },
+            "search": "Buscar",
+            "zeroRecords": "No se encontraron registros",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(filtrados desde _MAX_ registros totales)"
+        },
+        "bLengthChange": false
+    });
+</script>
